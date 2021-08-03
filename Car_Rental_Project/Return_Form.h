@@ -16,9 +16,7 @@ public:
     ~Return_Form();
 
 private slots:
-
-
-    void on_btnExit_clicked();
+    void on_exitBtn_clicked();
 
 private:
     Ui::Return_Form *ui;

@@ -1,24 +1,12 @@
 #include "EmployeeInterface.h"
-#include "ui_EmployeeInterface.h"
-#include <QMessageBox>
-#include<QFile>
-#include<QTextStream>
-#include<EmployeeAuthentication.h>
-#include<QDir>
-#include<QMenuBar>
-#include<QFile>
-#include <QList>
-#include<QDebug>
+#include<QPixmap>
 
+AdminInterface *adminWindow;
 EmployeeInterface::EmployeeInterface(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EmployeeInterface)
 {
     ui->setupUi(this);
-    QMenuBar().addMenu("File");
-    QMenuBar().addMenu("Edit");
-    QMenuBar().addMenu("Settings");
-    QMenuBar().addMenu("Help");
 
     /*
      * Using Qpixmap in order to include an image in the label
@@ -29,8 +17,12 @@ EmployeeInterface::EmployeeInterface(QWidget *parent) :
     /*
      * calling setPixmap with the parameters we got in order to put a scaled image in the label
      */
-
     ui->lblBackgroundTitle->setPixmap(pix.scaled(w,h));
+
+    //hiding the admin button
+    ui->backToAdminBtn->hide();
+
+
 
     /*
      * setting up the model from the file
@@ -56,30 +48,28 @@ EmployeeInterface::EmployeeInterface(QWidget *parent) :
     model->setHorizontalHeaderLabels(headers);
 
 
-     QFile sourceFile(":/res/utils/Available_Cars.txt");
-     if(!sourceFile.open(QIODevice::ReadOnly)){
-       //  qDebug() << "Unable to open the file"<<endl;
-         QMessageBox::information(this,"error",sourceFile.errorString());
-     }
-     QTextStream in(&sourceFile);
+    QFile sourceFile(":/res/utils/Available_Cars.txt");
+    sourceFile.open(QIODevice::ReadOnly);
+    if(!sourceFile.isOpen()){
+        //  qDebug() << "Unable to open the file"<<endl;
+        QMessageBox::information(this,"error",sourceFile.errorString());
+    }
+    QTextStream in(&sourceFile);
     int row =0;
-     while(!in.atEnd()){
+    while(!in.atEnd()){
 
-         QString line = in.readLine();
-         QStringList fields = line.split(",");
-         for(size_t i = 0;i<fields.length();i++){
-             QStandardItem *item = new QStandardItem(fields.at(i));
-
-             model->setItem(row,i,item);
-
-             qDebug() << item->data();
-         }
+        QString line = in.readLine();
+        QStringList fields = line.split(",");
+        for(size_t i = 0;i<fields.length();i++){
+            QStandardItem *item = new QStandardItem(fields.at(i));
+            model->setItem(row,i,item);
+        }
 
         row++;
-}
-      sourceFile.close();
-      ui->availableVehTable->setModel(model);
-      ui->availableVehTable->setAlternatingRowColors(true);
+    }
+    sourceFile.close();
+    ui->availableVehTable->setModel(model);
+    ui->availableVehTable->setAlternatingRowColors(true);
 
 }
 
@@ -88,7 +78,11 @@ EmployeeInterface::~EmployeeInterface()
     delete ui;
 }
 
-
+void EmployeeInterface::makeAdminButtonVisible()
+{
+    if(ui->backToAdminBtn->isHidden())
+        ui->backToAdminBtn->show();
+}
 
 void EmployeeInterface::on_btnEmplQuit_clicked()
 {
@@ -98,71 +92,48 @@ void EmployeeInterface::on_btnEmplQuit_clicked()
     }
 }
 
-
-
-
-
-
 void EmployeeInterface::on_btnOptions_clicked()
 {
-    //Vehicle v ;
-  //  v.setMake("HONDA");
-   // v.setModel("ACCORD");
-   // v.setVin("2343454342");
-  //  v.setYear(2020);
 
-    //EmployeeInterface::write();
-   // EmployeeInterface::read();
-    // QString string= "test";
-    //QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg(
-   //     (ui->table2->rowCount()+1)*(ui->table2->columnCount()+1)));
-   // ui->table2->insertRow(ui->table2->rowCount());
-   // ui->table2->setItem(ui->table2->rowCount(),1,newItem);
-   // ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-    //ui->tableWidget->setItem(ui->tableWidget->rowCount(),1,item);
-
-   // QTableWidgetItem *item = new QTableWidgetItem("Honda");
-    //ui->availableVTable->insertRow(1);
-    //ui->availableVTable->setItem(1,1,item);
-};
-void EmployeeInterface::write(){
-
-    EmployeeAuthentication ea1("test","test");
-    //ea.setPassword("password");
-    //ea.setUsername("username");
-    QString path = QDir::currentPath()+QDir::separator()+"test.dat";
-    QFile file(path);
-    if(!file.open(QIODevice::WriteOnly)){
-        return;
-    }
-    QDataStream stream(&file);
-    //QString username,password;
-    stream << ea1.getUsername();
-    stream << ea1.getPassword();
-    file.close();
-    //ui->lbltest->setText(path);
-}
-void EmployeeInterface::read(){
-    QString path = QDir::currentPath()+QDir::separator()+"test.dat";
-    QFile file(path);
-    if(!file.open(QIODevice::ReadOnly)){
-        return;
-    }
-    EmployeeAuthentication ea;
-    QDataStream stream(&file);
-    QString username,password;
-    stream>>username;
-    stream>>password;
-    ea.setPassword(password);
-    ea.setUsername(username);
-    ui->lbltest->setText("password:" + ea.getPassword()+"username: " +ea.getUsername());
 }
 
 void EmployeeInterface::on_btnRent_2_clicked()
 {
-    //show the rent form
     rentForm  = new RentForm(this);
-    rentForm->show();
+    Vehicle *v = NULL;
+
+
+    //retrieving the selected vehicle from the model.
+    QModelIndexList selectedList = ui->availableVehTable->selectionModel()->selectedIndexes();
+        if(selectedList.empty())
+            QMessageBox::warning(this,"empty selection!","Please select the car to rent first");
+
+        else{
+        QModelIndex index = selectedList.at(0);
+          if(index.data() == "Car")
+             v= new Car;
+          else if(index.data()=="Truck")
+              v = new Truck;
+          else
+              v = new MotorCycle;
+
+            v->setMake(selectedList.at(1).data().toString());
+            v->setModel(selectedList.at(2).data().toString());
+            v->setYear(selectedList.at(3).data().toInt());
+            v->setColor(selectedList.at(4).data().toString());
+            v->setWheelDrive(selectedList.at(5).data().toInt());
+            v->setMileage(selectedList.at(6).data().toInt());
+            double fare = selectedList.at(7).data().toDouble();
+
+          QObject::connect(this,SIGNAL(rentEvent(Vehicle*,double)),rentForm,SLOT(generateDescription(Vehicle*,double)));
+          emit rentEvent(v,fare);
+          rentForm->show();
+
+
+        qDebug()<<index.data();
+        }
+
+
 
 }
 
@@ -178,14 +149,25 @@ void EmployeeInterface::on_btnReturn_clicked()
 
 }
 
-void EmployeeInterface::on_tableWidget_cellClicked(int row, int column)
-{
-
-}
-
 void EmployeeInterface::on_btnAddVehicle_clicked()
 {
-  addNewVehicle = new AddNewVehicle(this);
-  addNewVehicle->show();
+    addNewVehicle = new AddNewVehicle(this);
+    addNewVehicle->show();
 
 }
+
+void EmployeeInterface::on_backToAdminBtn_clicked()
+{
+    //casting the parent object to Qdialog to invoke the show method.
+    static_cast<QDialog*>(this->parent())->show();
+    this->close();
+}
+
+
+
+void EmployeeInterface::on_availableVehTable_clicked(const QModelIndex &index)
+{
+    //selecting the whole row when clicking on a cell
+   ui->availableVehTable->selectRow(index.row());
+}
+

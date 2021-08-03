@@ -25,3 +25,8 @@ int Truck::getTowPower(){
 QString Truck::toString(){
     return "" ;
 }
+
+double Truck::calculateFare()
+{
+    return 0;
+}

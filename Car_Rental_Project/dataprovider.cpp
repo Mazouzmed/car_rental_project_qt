@@ -1,6 +1,9 @@
 #include "dataprovider.h"
 #include <QDebug>
 #include <QDate>
+#include <QMessageBox>
+#include <QFile>
+
 
 dataProvider::dataProvider()
 {
@@ -150,6 +153,28 @@ QStringList dataProvider::years() const
     return years.toList();
 }
 
+QStringList dataProvider::passengerCapacity()
+{
+    QVector<QString> passengerNumber={"1","2","3","4","5","6","7","8","9"};
+    return passengerNumber.toList();
+}
+
+QStringList dataProvider::wheelDrive()
+{
+    QVector<QString> wheelDrive={"2","4"};
+    return wheelDrive.toList();
+}
+
+void dataProvider::addNewVehicle(QString &str)
+{
+    QFile destinationFile(":/res/utils/Available_Cars.txt");
+    destinationFile.open(QIODevice::Append);
+    if (!destinationFile.isOpen())
+        qDebug()<<"there was an error opening the file: " + destinationFile.errorString();
+    QTextStream out(&destinationFile);
+    out << str <<endl;
+    destinationFile.close();
+}
 
 QStringList dataProvider::toList(QVector<QString>& makes)const
 {

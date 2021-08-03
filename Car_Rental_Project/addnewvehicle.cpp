@@ -8,7 +8,9 @@ AddNewVehicle::AddNewVehicle(QWidget *parent) :
     ui(new Ui::AddNewVehicle)
 {
     ui->setupUi(this);
-    QPixmap pix(":/res/img/background1.jpg");
+    this->setFixedSize(750,500);
+    this->setWindowTitle("Add New Vehicle");
+    QPixmap pix(":/res/img/car_logo.jpg");
     int w = ui->lblBanner->width(); // extracting the width of the label widget
     int h = ui->lblBanner->height();// extracting the height of the label widget
     // calling setPixmap with the parameters we got in order to put a scaled image in the label
@@ -23,6 +25,8 @@ AddNewVehicle::AddNewVehicle(QWidget *parent) :
     ui->typeCombo->addItems(data->vehicleTypes());
     ui->colorCombo->addItems(data->getColors());
     ui->yearCombo->addItems(data->years());
+    ui->passengerCapacityCombo->addItems(data->passengerCapacity());
+    ui->wdCombo->addItems(data->wheelDrive());
 
 
 }
@@ -67,6 +71,30 @@ void AddNewVehicle::on_pushButton_2_clicked()
 {
     int ret = QMessageBox::warning(this,"Quit?","Do you really want to quit?",QMessageBox::Yes,QMessageBox::No);
     if(ret == QMessageBox::Yes)
+    this->close();
+}
+
+
+void AddNewVehicle::on_addBtn_clicked()
+{
+    //Generating the String to be sent to the dataProvider for saving
+    QString str;
+    str = ui->typeCombo->currentText()+","+
+            ui->makeCombo->currentText()+","+
+            ui->modelCombo->currentText()+","+
+            ui->yearCombo->currentText()+","+
+            ui->colorCombo->currentText()+","+
+            ui->wdCombo->currentText()+","+
+            ui->mileageLineEdit->text()+","+
+            ui->baseFare->text();
+    //sending the generated string to the dataprovider class
+    data->addNewVehicle(str);
+
+}
+
+
+void AddNewVehicle::on_closeBtn_clicked()
+{
     this->close();
 }
 

@@ -41,4 +41,9 @@ double Car::calculatePrice(){
     return (mBaseFare*getMileage());
 }
 
+double Car::calculateFare()
+{
+    return 0;
+}
+
 

@@ -5,7 +5,7 @@
 
 class MotorCycle : public Vehicle
 {
-
+Q_OBJECT
 public:
     MotorCycle();
     virtual ~MotorCycle()=default;
@@ -18,6 +18,7 @@ public:
     QString getRidingGear();
     bool getHasAuxiliaryLights();
     QString toString();
+    double calculateFare() override;
 private:
     QString mType;
     int mNUmberOfHelmets;

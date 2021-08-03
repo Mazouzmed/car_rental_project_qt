@@ -44,7 +44,7 @@ QPushButton#btnViewStock:hover {
 }</string>
       </property>
       <property name="text">
-       <string>View Vehicles Stock</string>
+       <string>View Vehicle Inventory</string>
       </property>
      </widget>
     </item>

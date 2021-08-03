@@ -6,7 +6,7 @@
 
 class Truck:public Car
 {
-
+    Q_OBJECT
 public:
     Truck();
     virtual ~Truck()=default;
@@ -17,6 +17,8 @@ public:
     bool getHasCamperShell();
     int getTowPower();
     QString toString();
+    //overriding the method from the base class vehicle
+    double calculateFare() override;
 private:
     int mBedSize;
     bool mHasCamperShell;

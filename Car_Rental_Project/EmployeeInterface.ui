@@ -72,43 +72,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnEmplQuit">
-   <property name="geometry">
-    <rect>
-     <x>910</x>
-     <y>590</y>
-     <width>249</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#btnEmplQuit{
-background-color: #ff5500; 
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-}
-
-QPushButton#btnEmplQuit:hover {
-  background-color: #ffaa00; /* Green */
-  color: white;
-}</string>
-   </property>
-   <property name="text">
-    <string>Quit</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -120,7 +83,7 @@ QPushButton#btnEmplQuit:hover {
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout"/>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -291,13 +254,87 @@ QPushButton#btnOptions:hover {
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>600</y>
+     <width>431</width>
+     <height>52</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <widget class="QPushButton" name="backToAdminBtn">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#backToAdminBtn {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnOptions:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Go back to Admin</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnEmplQuit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#btnEmplQuit{
+background-color: #ff5500; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnEmplQuit:hover {
+  background-color: #ffaa00; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Quit</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>lblBackgroundTitle</zorder>
   <zorder>layoutWidget</zorder>
   <zorder>btnRent</zorder>
-  <zorder>groupBox</zorder>
   <zorder>lbltest</zorder>
   <zorder>btnEmplQuit</zorder>
+  <zorder>backToAdminBtn</zorder>
  </widget>
  <resources/>
  <connections/>

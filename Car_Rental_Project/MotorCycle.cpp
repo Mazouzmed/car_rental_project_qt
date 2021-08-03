@@ -28,3 +28,8 @@ bool MotorCycle::getHasAuxiliaryLights(){
 QString MotorCycle::toString(){
     return "" ;
 }
+
+double MotorCycle::calculateFare()
+{
+    return 0;
+}

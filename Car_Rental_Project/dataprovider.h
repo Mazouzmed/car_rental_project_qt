@@ -42,8 +42,15 @@ public:
      * return list of years starting from 2000
      */
     QStringList years() const;
+
+    QStringList passengerCapacity();
+
+    QStringList wheelDrive();
+
+    //saving new vehicles
+    void addNewVehicle(QString&);
 public slots:
-    bool saveVehicle(Vehicle &v);
+   // bool saveVehicle(Vehicle &v);
 private:
     /*
      * method for converting the String arrays to lists
