@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include"EmployeeInterface.h"
 #include"AdminInterface.h"
+#include "EmployeeAuthentication.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

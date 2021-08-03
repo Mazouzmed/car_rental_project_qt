@@ -2,9 +2,11 @@
 #define CAR_H
 #include<QString>
 #include"vehicle.h"
+#include<QObject>
 
 class Car:public Vehicle
 {
+    Q_OBJECT
 public:
     Car();
     virtual ~Car()=default;
@@ -23,6 +25,7 @@ public:
     QString getEngineType();
     double getBasFare();
     double calculatePrice();
+    double  calculateFare() override ;
     QString toString() ;
 
 

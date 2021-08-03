@@ -4,5 +4,8 @@
         <file>img/background1.jpg</file>
         <file>utils/auth.dat</file>
         <file>utils/Available_Cars.txt</file>
+        <file>utils/vehicles</file>
+        <file>img/car_logo.jpg</file>
+        <file>utils/employees.txt</file>
     </qresource>
 </RCC>

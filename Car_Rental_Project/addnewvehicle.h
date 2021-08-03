@@ -23,6 +23,10 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_addBtn_clicked();
+
+    void on_closeBtn_clicked();
+
 private:
     Ui::AddNewVehicle *ui;
     dataProvider *data;

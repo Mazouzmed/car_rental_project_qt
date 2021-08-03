@@ -31,7 +31,10 @@ void MainWindow::on_btnSignIn_clicked()
 {
     QString userName = ui->txtUsername->text();
     QString password = ui->txtPassword->text();
-    if(userName == "test" && password == "test"){
+    EmployeeAuthentication emp;
+    emp.setUsername(userName);
+    emp.setPassword(password);
+    if( EmployeeAuthentication::authenticate(emp)){
             this->close();
             employeeInterface = new EmployeeInterface(this);
             employeeInterface->show();

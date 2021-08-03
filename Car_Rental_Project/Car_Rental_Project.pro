@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,7 +25,9 @@ SOURCES += \
     addnewvehicle.cpp \
     dataprovider.cpp \
     main.cpp \
-    vehicle.cpp
+    printer.cpp \
+    vehicle.cpp \
+    vehicleinventoryform.cpp
 
 HEADERS += \
     AddEmployee.h \
@@ -43,7 +45,9 @@ HEADERS += \
     Truck.h \
     addnewvehicle.h \
     dataprovider.h \
-    vehicle.h
+    printer.h \
+    vehicle.h \
+    vehicleinventoryform.h
 
 FORMS += \
     AddEmployee.ui \
@@ -52,7 +56,8 @@ FORMS += \
     MainWindow.ui \
     RentForm.ui \
     Return_Form.ui \
-    addnewvehicle.ui
+    addnewvehicle.ui \
+    vehicleinventoryform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -61,3 +66,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Resources.qrc
+
+DISTFILES += \
+    img/car_logo.jpg

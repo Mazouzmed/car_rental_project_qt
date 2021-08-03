@@ -13,34 +13,67 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
      <y>380</y>
      <width>441</width>
-     <height>37</height>
+     <height>52</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_5">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="saveBtn">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#saveBtn {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+QPushButton#saveBtn:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
       <property name="text">
        <string>Save</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnExit">
+     <widget class="QPushButton" name="exitBtn">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#exitBtn {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+QPushButton#exitBtn:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
       <property name="text">
        <string>Exit</string>
       </property>
      </widget>
     </item>
    </layout>
-   <zorder>btnExit</zorder>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
