@@ -1,0 +1,4 @@
+Car,Honda,Accord,2011,Black,2,90000,40
+Truck,RAM,XXX,2020,Green,4,30000,120
+MotorCycle,Harley-Davidson,145,2017,Brown,1,4000,55
+Car,Toyota,Camry,2019,White,2,12000,80

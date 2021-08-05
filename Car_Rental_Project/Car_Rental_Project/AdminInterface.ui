@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminInterface</class>
+ <widget class="QDialog" name="AdminInterface">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>752</width>
+    <height>447</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>80</y>
+     <width>351</width>
+     <height>280</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QPushButton" name="btnViewStock">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#btnViewStock {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnViewStock:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>View Vehicle Inventory</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="btnAddVehicle">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#btnAddVehicle {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnAddVehicle:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Add Vehicle</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="btnDeleteVehicle">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#btnDeleteVehicle {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnDeleteVehicle:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Delete Vehicle</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="btnViewEmployees">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#btnViewEmployees {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnViewEmployees:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Add Employee</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="btnOpenEmployeeInterface">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#btnOpenEmployeeInterface {
+background-color: #6246ff; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnOpenEmployeeInterface:hover {
+  background-color: #215a91; /* Green */
+  color: white;
+}</string>
+      </property>
+      <property name="text">
+       <string>Open Employee Interface</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="lblBanner">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>751</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnQuit">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>390</y>
+     <width>161</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#btnQuit{
+background-color: #ff5500; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+QPushButton#btnQuit:hover {
+  background-color: #ffaa00; /* Green */
+  color: white;
+}</string>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>20</y>
+     <width>381</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:#ffffff;</string>
+   </property>
+   <property name="text">
+    <string>CARSYS RENTALS - ADMIN INTERFACE</string>
+   </property>
+  </widget>
+  <zorder>lblBanner</zorder>
+  <zorder>gridLayoutWidget</zorder>
+  <zorder>btnQuit</zorder>
+  <zorder>label</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,16 @@
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
+
+
+
+class Customer:public Person
+{
+public:
+    Customer();
+    ~Customer()= default;
+    
+private:
+    int mCustomerId;
+};
+
+#endif // CUSTOMER_H
